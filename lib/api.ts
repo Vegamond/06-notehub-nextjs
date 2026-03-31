@@ -4,9 +4,6 @@ import type { CreateNotePayload, Note } from '@/types/note';
 export interface FetchNotesResponse {
   notes: Note[];
   totalPages: number;
-  page: number;
-  perPage: number;
-  totalItems: number;
 }
 
 export interface FetchNotesParams {
