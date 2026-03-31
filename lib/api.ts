@@ -1,10 +1,19 @@
 import axios from 'axios';
-import type {
-  CreateNotePayload,
-  FetchNotesParams,
-  FetchNotesResponse,
-  Note,
-} from '@/types/note';
+import type { CreateNotePayload, Note } from '@/types/note';
+
+export interface FetchNotesResponse {
+  notes: Note[];
+  totalPages: number;
+  page: number;
+  perPage: number;
+  totalItems: number;
+}
+
+export interface FetchNotesParams {
+  page: number;
+  perPage: number;
+  search?: string;
+}
 
 const TOKEN = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
 
@@ -31,10 +40,7 @@ export const fetchNotes = async ({
     params.search = trimmedSearch;
   }
 
-  const { data } = await noteHubApi.get<FetchNotesResponse>('/notes', {
-    params,
-  });
-
+  const { data } = await noteHubApi.get<FetchNotesResponse>('/notes', { params });
   return data;
 };
 
