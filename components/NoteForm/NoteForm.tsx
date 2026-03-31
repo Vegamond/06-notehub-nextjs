@@ -68,25 +68,25 @@ export default function NoteForm({ onClose }: NoteFormProps) {
       onSubmit={handleSubmit}
     >
       <Form className={css.form}>
-        <h2 className={css.title}>Create note</h2>
+        <h2>Create note</h2>
 
-        <label className={css.label}>
-          Title
+        <label className={css.formGroup}>
+          <span>Title</span>
           <Field className={css.input} type="text" name="title" />
           <ErrorMessage className={css.error} component="span" name="title" />
         </label>
 
-        <label className={css.label}>
-          Content
+        <label className={css.formGroup}>
+          <span>Content</span>
           <Field className={css.textarea} as="textarea" name="content" rows={6} />
           <ErrorMessage className={css.error} component="span" name="content" />
         </label>
 
-        <label className={css.label}>
-          Tag
+        <label className={css.formGroup}>
+          <span>Tag</span>
           <Field className={css.select} as="select" name="tag">
             <option value="">Select tag</option>
-            {tagOptions.map(tag => (
+            {tagOptions.map((tag) => (
               <option key={tag} value={tag}>
                 {tag}
               </option>
@@ -105,7 +105,7 @@ export default function NoteForm({ onClose }: NoteFormProps) {
             type="submit"
             disabled={createNoteMutation.isPending}
           >
-            {createNoteMutation.isPending ? 'Creating...' : 'Create'}
+            {createNoteMutation.isPending ? 'Creating...' : 'Create note'}
           </button>
         </div>
       </Form>
